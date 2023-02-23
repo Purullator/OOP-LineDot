@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../classes/Punto.js"></script>
+    <script src="../classes/Linea.js"></script>
+  </head>
+  <body>
+    <h1>Pruebas de la clase Linea</h1>
+    <h2>Constructor y toString</h2>
+    <script>
+      var punto1 = new Punto(3, 5);
+      var punto2 = new Punto(50, 100);
+
+      var linea = new Linea();
+      document.write(linea + '<br>');
+
+      linea = new Linea(punto1);
+      document.write(linea + '<br>');
+
+      linea = new Linea(punto1, punto2);
+      document.write(linea + '<br>');
+    </script>
+    <h2>Entendiendo las referencias</h2>
+    <script>
+      var punto1 = new Punto(10, 20);
+      var punto2 = new Punto(20, 40);
+
+      var linea = new Linea(punto1, punto2);
+      document.write(linea + '<br>');
+
+      punto1.mover(5, 15);
+      punto2.mover(15, 25);
+      document.write(linea + '<br>');
+
+      linea.mover(-15, -35);
+      document.write(linea + '<br>');
+      document.write(punto1 + '<br>');
+      document.write(punto2 + '<br>');
+    </script>
+  </body>
+</html>

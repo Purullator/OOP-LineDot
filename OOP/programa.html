@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dibujando Figuras</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <script src="classes/Punto.js"></script>
+    <script src="classes/Linea.js"></script>
+    <script src="classes/Circulo.js"></script>
+    <script>
+      function dibujar() {
+        var p1x = parseInt(inp1x.value);
+        var p1y = parseInt(inp1y.value);
+        var p2x = parseInt(inp2x.value);
+        var p2y = parseInt(inp2y.value);
+        var linea = new Linea(new Punto(p1x, p1y), new Punto(p2x, p2y));
+        linea.dibujar(lienzo, inColor.value);
+      }
+
+      function dibujaCirculo() {
+        if (puntos.length >= 2) {
+          var p2 = puntos.pop();
+          var p1 = puntos.pop();
+          var radio = p1.distanciaA(p2);
+          figuras.push(
+            new CirculoGrafico(p1, radio, colorBorde.value, colorRelleno.value)
+          );
+          puntos = [];
+          lienzo.actualizar();
+          seleccionar.actualizar();
+        }
+      }
+    </script>
+    <style>
+      * {
+        margin: 5px;
+      }
+      canvas {
+        border: solid 1px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flexContainer">
+      <div class="flex1">
+        <canvas id="lienzo" height="500" width="500" class="flex2"></canvas>
+      </div>
+
+      <div class="flex1 menuSelection">
+        <h1>Dibujando Líneas</h1>
+        <p>Punto 1:</p>
+        <input type="number" id="inp1x" value="0" />
+        <br />
+        <input type="number" id="inp1y" value="0" />
+        <br />
+        <p>Punto 2:</p>
+        <input type="number" id="inp2x" value="500" />
+        <br />
+        <input type="number" id="inp2y" value="500" />
+        <br />
+        <p>Color:</p>
+        <input type="color" id="inColor" />
+        <br />
+        <button onclick="dibujar()">Dibujar</button>
+
+        <h2>Dibujar Círculo</h2>
+        <p>Punto:</p>
+        <input type="number" id="inpx" value="0" />
+        <br />
+        <input type="number" id="inpy" value="0" />
+        <br />
+        <p>Radio:</p>
+        <input type="number" id="inrad" value="1" />
+        <br />
+        <button onclick="dibujaCirculo()">Dibujar un Circulo</button>
+      </div>
+    </div>
+  </body>
+</html>

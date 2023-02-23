@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../classes/Punto.js"></script>
+  </head>
+  <body>
+    <h1>Pruebas de la clase Punto</h1>
+    <h2>Probando el constructor y el toString</h2>
+    <script>
+      var p = new Punto();
+      document.write(p);
+      document.write('<br>');
+
+      p = new Punto(2);
+      document.write(p);
+      document.write('<br>');
+
+      p = new Punto(3, 4);
+      document.write(p);
+      document.write('<br>');
+    </script>
+
+    <h2>Accediendo a las propiedades</h2>
+    <script>
+      p = new Punto(5, 6);
+      document.write(p);
+      document.write('<br>');
+
+      p.x = 100;
+      p.y = 200;
+
+      document.write(p.x);
+      document.write('<br>');
+      document.write(p.y);
+      document.write('<br>');
+      document.write(p);
+      document.write('<br>');
+    </script>
+
+    <h2>Mover los puntos</h2>
+    <script>
+      p = new Punto(100, 200);
+
+      p.mover(-50, 50);
+      document.write(p);
+      document.write('<br>');
+
+      p.aOrigen();
+      document.write(p);
+      document.write('<br>');
+    </script>
+    <h2>Chaining</h2>
+    <script>
+      p = new Punto(100, 200);
+      document.write(p.mover(-50, 50));
+      document.write('<br>');
+
+      p.aOrigen().mover(10, 20);
+      document.write(p);
+      document.write('<br>');
+
+      document.write(p.aOrigen().mover(1, 2).mover(2, 1).mover(10, 10));
+      document.write('<br>');
+    </script>
+    <h2>Probando distanciaOrigen()</h2>
+    <script>
+      p = new Punto(100, 100);
+      document.write(p.distanciaOrigen());
+      document.write('<br>');
+
+      document.write(p.mover(-100).distanciaOrigen());
+      document.write('<br>');
+
+      p = new Punto();
+      document.write(p.distanciaOrigen());
+      document.write('<br>');
+
+      document.write(new Punto(3, 4).distanciaOrigen());
+    </script>
+
+    <h2>Probando distanciaA()</h2>
+    <script>
+      var p1 = new Punto(10, 15);
+      var p2 = new Punto(13, 19);
+
+      document.write(p1.distanciaA(p2));
+      document.write('<br>');
+      document.write(p2.distanciaA(p1));
+      document.write('<br>');
+      document.write(p1.distanciaA(p1));
+      document.write('<br>');
+      document.write(p1.aOrigen().mover(1, 1).distanciaA(new Punto()));
+      document.write('<br>');
+    </script>
+  </body>
+</html>
